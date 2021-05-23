@@ -1,3 +1,5 @@
+import os
+
 import kakieto_funk as fu
 import config2
 import logging
@@ -9,6 +11,20 @@ from aiogram import Bot, Dispatcher, executor, types
 from parsing_class import Nibulon
 from datetime import datetime
 from my_text import Text
+
+
+
+
+TOKEN = os.environ['TOKEN']
+
+
+WEBHOOK_HOST = 'https://deploy-heroku-bot.herokuapp.com'  # name your app
+WEBHOOK_PATH = '/webhook/'
+WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+
+WEBAPP_HOST = '0.0.0.0'
+WEBAPP_PORT = os.environ.get('PORT')
+
 
 logging.basicConfig(level=logging.INFO)
 
