@@ -3,31 +3,10 @@ from datetime import datetime
 from my_text import Text
 text = Text()
 
-import googlemaps
 from aiogram import types
 from geopy.distance import geodesic
 
 from bot2 import db, bot
-from config2 import API_KEY , NIKO
-
-
-
-def roztoyanie(location: dict):
-
-    you = (location['latitude'], location['longitude'])
-    km = geodesic(NIKO, you).km
-    return int(km)
-
-def proschet(location: dict):
-    you = (location['latitude'], location['longitude'])
-    gmaps_client = googlemaps.Client(key=API_KEY)
-
-    d = gmaps_client.distance_matrix(
-        origins=NIKO,
-        destinations=(you),
-        mode='driving',
-    )
-    return d['rows'][0]['elements'][0]['distance']['text'].replace('km', '')
 
 
 async def send_all():

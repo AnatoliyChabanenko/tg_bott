@@ -8,11 +8,15 @@ beautifulsoup4==4.9.3
 bs4==0.0.1
 certifi==2020.12.5
 chardet==4.0.0
+click==8.0.1
+decouple==0.0.7
+env==0.1.0
 geographiclib==1.50
 geopy==2.1.0
 googlemaps==4.4.5
 idna==2.10
 multidict==5.1.0
+python-dotenv==0.17.1
 pytz==2021.1
 requests==2.25.1
 soupsieve==2.2.1
