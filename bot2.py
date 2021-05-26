@@ -12,23 +12,18 @@ from parsing_class import Nibulon
 from datetime import datetime
 from my_text import Text
 
+import os
 
+from dotenv import  load_dotenv
+load_dotenv()
 
-
-TOKEN = os.environ['TOKEN']
-
-
-WEBHOOK_HOST = 'https://deploy-heroku-bot.herokuapp.com'  # name your app
-WEBHOOK_PATH = '/webhook/'
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
-
-WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = os.environ.get('PORT')
+TOKEN = os.getenv('TOKEN')
+API_KEY = os.getenv('API_KEY')
 
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token=config2.TOKEN)
+bot = Bot(TOKEN)
 dp = Dispatcher(bot)
 db = SQLighter('db.db')
 nb = Nibulon()
@@ -47,7 +42,7 @@ async def process_start_command(message: types.Message):
 async def process_command(message: types.Message):
     prise = fu.read_json()
     data = datetime.today().strftime("%d.%m.%Y")
-    await message.answer(text.prise(data,prise), reply_markup=kb.markup1)
+    await message.answer(text.prise(data, prise), reply_markup=kb.markup1)
 
 
 @dp.message_handler(content_types=['location'])
@@ -56,7 +51,7 @@ async def handle_loc(message):
     prise = round(km * 1.1)
 
     await message.answer(text.location(km, prise),
-        reply_markup=kb.markup1)
+                         reply_markup=kb.markup1)
 
 
 @dp.message_handler(content_types=['contact'])

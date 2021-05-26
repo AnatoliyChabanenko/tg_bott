@@ -1,5 +1,11 @@
 import googlemaps
-from config2 import API_KEY
+import os
+from dotenv import  load_dotenv
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+
+
 def proschet(location: dict):
     me = ('46.849476', '31.990699')
     you = (location['latitude'], location['longitude'])
